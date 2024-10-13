@@ -1,0 +1,24 @@
+﻿@model MvcKutuphane.Models.Entity.Tbl_Admin
+@{
+    ViewBag.Title = "AdminGuncelle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("AdminGuncelle", "Ayarlar", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>Kullanıcı</label>
+        @Html.TextBoxFor(x => x.Kullanıcı, new { @class = "form-control" })
+        <br />
+        <label>Şifre</label>
+        @Html.PasswordFor(x => x.Sifre, new { @class = "form-control", @value = "*****" })
+        <br />
+        <label>Yetki</label>
+        @Html.TextBoxFor(x => x.Yetki, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning" style="width:120px; height:35px; font-size:20px">Güncelle</button>
+    </div>
+}
+

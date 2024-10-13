@@ -1,0 +1,125 @@
+﻿@model MvcKutuphane.Models.Entity.Tbl_Uyeler
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kayıt Ol</title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Course Register Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //custom-theme -->
+    <!-- css files -->
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link href="~/webregister/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- //css files -->
+
+    <link rel="stylesheet" href="~/webregister/css/font-awesome.css">
+    <!-- Font-Awesome-Icons-CSS -->
+    <link rel="icon" type="image/x-icon" href="~/webpanel/assets/online-library.ico" />
+
+</head>
+<!-- body starts -->
+<body>
+    <!-- section -->
+    <section class="register">
+        <div class="register-full">
+            <div class="register-left">
+                <div class="register">
+                    <div class="logo">
+                        <a href="#"><span class="fa fa-leanpub" aria-hidden="true"></span></a>
+                    </div>
+                    <h1 style="color:black">KÜTÜPHANEMİZE KAYIT OLUN</h1>
+                    <p style="font-size: 20px; color:black; font-family:'Times New Roman', Times, serif">
+                        Kütüphanemize hoş geldiniz! Kayıt olmak için sağ taraftaki paneldeki bilgileri
+                        eksiksiz bir şekilde girerek kaydınızı gerçekleştirebilirsiniz.
+                    </p>
+                    <div class="content3">
+                        <ul>
+                            <li><a class="" href="/Login/GirisYap/"> Giriş Yap</a></li>
+                            <li><a class="read" href="/Vitrin/Index/"> Siteye Dön</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="register-right">
+                <div class="register-in">
+                    <h2><span class="fa fa-pencil"></span> Kayıt Paneli</h2>
+                    <div class="register-form">
+                        @using (Html.BeginForm("Kayit","KayitOl",FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="fields-grid">
+                                <div class="styled-input agile-styled-input-top">
+                                    @Html.TextBoxFor(model => model.Ad, new { @class = "form-control", placeholder = "" })
+                                    @Html.LabelFor(model => model.Ad, "Adınız",new {@style = "color:white"})
+                                    @Html.ValidationMessageFor(model => model.Ad, "", new { @class = "text-danger" })
+                                    <span></span>
+                                </div>
+                                <div class="styled-input agile-styled-input-top">
+                                    @Html.TextBoxFor(model => model.Soyad, new { @class = "form-control", placeholder = "" })
+                                    @Html.LabelFor(model => model.Soyad, "Soyadınız", new { @style = "color:white" })
+                                    @Html.ValidationMessageFor(model => model.Soyad, "", new { @class = "text-danger" })
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    @Html.TextBoxFor(model => model.Mail, new { @class = "form-control", placeholder = "" })
+                                    @Html.LabelFor(model => model.Mail, "Email", new { @style = "color:white" })
+                                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    @Html.TextBoxFor(model => model.KullanıcıAdı, new { @class = "form-control", placeholder = "" })
+                                    @Html.LabelFor(model => model.KullanıcıAdı, "Kullanıcı Adı", new { @style = "color:white" })
+                                    @Html.ValidationMessageFor(model => model.KullanıcıAdı, "", new { @class = "text-danger" })
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    @Html.PasswordFor(model => model.Sifre, new { @class = "form-control", placeholder = "" })
+                                    @Html.LabelFor(model => model.Sifre, "Şifre", new { @style = "color:white" })
+                                    @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    @Html.TextBoxFor(model => model.Telefon, new { @class = "form-control", placeholder = "" })
+                                    @Html.LabelFor(model => model.Telefon, "Telefon", new { @style = "color:white" })
+                                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                                    <span></span>
+                                </div>
+                                <div class="styled-input agile-styled-input-top">
+                                    <div class="form-group">
+                                        @Html.Label("Öğrenim Durumunuzu Seçin", new { @style = "color:white" })
+                                        <br />
+                                        <div class="col-md-10">
+                                            @Html.DropDownListFor(model => model.Tbl_Egitimler.ID, (List<SelectListItem>)ViewBag.egitim1, new { @class = "form-control", @style = "color:white" })
+                                        </div>
+                                    </div>
+                                    <span></span>
+                                </div>
+                                <div class="clear"> </div>
+                                <label class="checkbox"><input type="checkbox" name="checkbox" checked><i></i>Şartları okudum<a href="#"> kabul ediyorum</a></label>
+                            </div>
+                            <input type="submit" value="Kayıt Ol">
+                        }
+                    </div>
+                </div>
+                <div class="clear"> </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+        <!-- copyright -->
+        <p class="agile-copyright"> Tüm Hakları Saklıdır - All rights reserved © 2024</p>
+        <!-- //copyright -->
+    </section>
+    <!-- //section -->
+</body>
+<!-- //body ends -->
+</html>

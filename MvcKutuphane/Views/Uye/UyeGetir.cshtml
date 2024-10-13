@@ -1,0 +1,39 @@
+﻿@model MvcKutuphane.Models.Entity.Tbl_Uyeler
+@{
+    ViewBag.Title = "UyeGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UyeGuncelle", "Uye", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>Üye Adı</label>
+        @Html.TextBoxFor(u => u.Ad, new { @class = "form-control" })
+        <br />
+        <label>Üye Soyadı</label>
+        @Html.TextBoxFor(u => u.Soyad, new { @class = "form-control" })
+        <br />
+        <label>Mail Adresi</label>
+        @Html.TextBoxFor(u => u.Mail, new { @class = "form-control" })
+        <br />
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(u => u.KullanıcıAdı, new { @class = "form-control" })
+        <br />
+        <label>Şifre</label>
+        @Html.PasswordFor(u => u.Sifre, new { @class = "form-control", @value = "*****" })
+        <br />
+        <label>Telefon</label>
+        @Html.TextBoxFor(u => u.Telefon, new { @class = "form-control" })
+        <br />
+        <label>Eğitim Durumu</label>
+        @Html.DropDownListFor(u => u.EgitimDurumu, (List<SelectListItem>)ViewBag.egitim1, new { @class = "form-control" })
+        <br />
+        <label>Fotoğraf Linki</label>
+        @Html.TextBoxFor(u => u.Fotoğraf, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning" style="width:120px; height:35px; font-size:20px">Güncelle</button>
+    </div>
+}
+

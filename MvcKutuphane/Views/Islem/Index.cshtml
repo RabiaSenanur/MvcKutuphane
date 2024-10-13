@@ -1,0 +1,45 @@
+﻿@using MvcKutuphane.Models.Entity;
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Tbl_Hareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>İadesi Alınan Kitap Listesi</h2>
+
+@using (Html.BeginForm("Index", "Islem", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Kitap Adını Girin: &nbsp;</b>@Html.TextBox("p")
+        <input type="submit" value="Ara" class="btn btn-primary" />
+    </div>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>İşlem ID</th>
+        <th>Kitap Adı</th>
+        <th>Üye</th>
+        <th>Personel</th>
+        <th>Alış Tarihi</th>
+        <th>Üye İade Tarihi</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.ID</td>
+            <td>@k.Tbl_Kitaplar.Ad</td>
+            <td>@k.Tbl_Uyeler.Ad &nbsp; @k.Tbl_Uyeler.Soyad</td>
+            <td>@k.Tbl_Personeller.Personel</td>
+            <td>@Convert.ToDateTime(k.AlısTarih).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(k.UyeninGetirTarih).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Odunc/OduncIade/@k.ID" class="btn btn-default" style="background-color:#64adf7; width: 160px; height: 35px; font-size: 18px;">Detaylar</a></td>
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+

@@ -1,0 +1,52 @@
+﻿@model MvcKutuphane.Models.Entity.Tbl_Uyeler
+@{
+    ViewBag.Title = "UyeEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Üye Adı</label>
+        @Html.TextBoxFor(u => u.Ad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Ad, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Üye Soyadı</label>
+        @Html.TextBoxFor(u => u.Soyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Soyad, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Mail Adresi</label>
+        @Html.TextBoxFor(u => u.Mail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Mail, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(u => u.KullanıcıAdı, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.KullanıcıAdı, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Şifre</label>
+        @Html.TextBoxFor(u => u.Sifre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Sifre, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Fotoğraf Linki</label>
+        @Html.TextBoxFor(u => u.Fotoğraf, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Fotoğraf, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Telefon</label>
+        @Html.TextBoxFor(u => u.Telefon, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Telefon, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Eğitim Durumu</label>
+        @Html.DropDownListFor(u => u.EgitimDurumu, (List<SelectListItem>)ViewBag.egitim1, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.EgitimDurumu, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="Btn1" style="height: 30px; font-size: 18px">Üye Ekle</button>
+    </div>
+</form>

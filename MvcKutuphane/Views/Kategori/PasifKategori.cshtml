@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "PasifKategori";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Pasif Kategoriler</h2>
+
+<table class="table table-bordered">
+    <tr style="background-color:aqua">
+        <th>KATEGORİ ID</th>
+        <th>KATEGORİ ADI</th>
+        <th>AKTİFLİK</th>
+    </tr>
+    @foreach (var ktg in Model)
+    {
+        <tr>
+            <td>@ktg.KategoriID</td>
+            <td>@ktg.KategoriAd</td>
+            <td><a href="/Kategori/KategoriAktifEt/@ktg.KategoriID" class="btn btn-danger" style="width:100px; height:35px; font-size:18px">Aktif Et</a></td>
+        </tr>
+    }
+</table>
+<a href="/Kategori/Index/" class="btn btn-primary" style="width:160px; height:35px; font-size: 18px;">Aktif Kategoriler</a>

@@ -1,0 +1,51 @@
+﻿@using MvcKutuphane.Models.Entity
+@model List<Tbl_Duyurular>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    string renk = "";
+}
+
+<h2>Duyurular</h2>
+
+<table class="table table-hover">
+    <tr style="background-color:antiquewhite">
+        <th>Duyuru No</th>
+        <th>Kategori</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>İçerik</th>
+    </tr>
+    @foreach (var d in Model)
+    {
+        if(d.Kategori == "Diğer")
+        {
+            renk = "bg-info text-white";
+        }
+        else if(d.Kategori == "Yeni Kitap")
+        {
+            renk = "bg-success text-white";
+        }
+        else if(d.Kategori == "Kitapları Geciktirmeyin")
+        {
+            renk = "bg-warning text-white";
+        }
+        else if(d.Kategori == "İletişim")
+        {
+            renk = "bg-primary text-white";
+        }
+        else
+        {
+            renk = "bg-dark text-white";
+        }
+        <tr>
+            <td>@d.ID</td>
+            <td class="@renk">@d.Kategori</td>
+            <td>@Convert.ToDateTime(d.Tarih).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Duyuru/DuyuruSil/@d.ID" class="btn btn-danger" style="width:35px; height:35px; font-size:18px">Sil</a></td>
+            <td><a href="/Duyuru/DuyuruDetay/@d.ID" class="btn btn-default" style="background-color:skyblue; height:35px; font-size:18px">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Duyuru/YeniDuyuru/" class="btn btn-primary" style="width:160px; height:35px; font-size: 18px;">Yeni Duyuru Ekle</a>
+
